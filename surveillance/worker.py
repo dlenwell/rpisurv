@@ -8,7 +8,7 @@ from setuplogging import setup_logging
 
 def worker(name,rtsp_url,omxplayer_extra_options,coordinates,stopworker):
     def start_subprocess(rtsp_url,coordinates):
-        command_line='/usr/bin/omxplayer --live --timeout 60 --aidx -1 -o hdmi' + ' ' + omxplayer_extra_options + ' ' +  rtsp_url + ' --win ' + '"' + " ".join(map(str,coordinates)) + '"'
+        command_line='/usr/bin/omxplayer -n -1 --timeout 60 --n -1 -o hdmi' + ' ' + omxplayer_extra_options + ' ' +  rtsp_url + ' --win ' + '"' + " ".join(map(str,coordinates)) + '"'
         command_line_shlex=shlex.split(command_line)
         logger.debug("Starting stream " + name + " with commandline " + str(command_line_shlex))
         #The other process is just to be able to develop/simulate on a Windows or OSX machine
